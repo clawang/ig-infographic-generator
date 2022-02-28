@@ -95,7 +95,9 @@ let content = {
 		"harambe",
 		"goblin mode",
 		"having acrylic nails",
-		"baymax from big hero 6"
+		"baymax from big hero 6",
+		"calling your boss dad",
+		"emily mariko's salmon rice"
 	],
 	1: [
 		"nepotism babies",

@@ -1,3 +1,13 @@
+@font-face {
+	font-family: 'Maison Neue';
+	src: url('./media/MaisonNeue-Book.ttf');
+}
+
+@font-face {
+	font-family: 'Bebas Neue';
+	src: url('./media/BebasNeue-Regular.ttf');
+}
+
 :root {
 	--pink-color: #f5a9ba;
 }
