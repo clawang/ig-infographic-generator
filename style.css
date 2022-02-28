@@ -1,0 +1,86 @@
+:root {
+	--pink-color: #f5a9ba;
+}
+
+body {
+	font-family: 'Anonymous Pro', 'Courier';
+	background: white;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+}
+
+h1 {
+	color: black;
+}
+
+p {
+	margin: 0;
+}
+
+canvas {
+	/*border:  1px solid black;*/
+	width: 500px;
+	height: 500px;
+}
+
+button {
+	background: var(--pink-color);
+	font-family: 'Anonymous Pro', 'Courier';
+	font-size: 15px;
+	padding: 10px 15px;
+	text-transform: uppercase;
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+.canvas-graphic-wrapper {
+	border: 2px solid black;
+	width:  500px;
+	background: white;
+	margin: 10px auto;
+}
+
+.top-bar {
+	background: var(--pink-color);
+	width: 100%;
+	position: relative;
+	border-bottom: 2px solid black;
+	text-align: center;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.top-bar:before {
+	content: 'X';
+	color: black;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-family: 'Arial';	
+}
+
+.button-wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#twitter {
+	position: absolute;
+	bottom: 15px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+}
+
+#twitter a {
+	color: black;
+	text-decoration: none;
+}
+
+#twitter-logo {
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+}
