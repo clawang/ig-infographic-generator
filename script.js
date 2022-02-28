@@ -130,6 +130,11 @@ function getLines(ctx, text, maxWidth) {
     return lines;
 }
 
+function getLineHeight(text) {
+	const textMetrics = ctx.mesureText(text);
+
+}
+
 function drawCanvas() {
 	const size = width;
 	const ratio = size/500;
@@ -155,8 +160,8 @@ function drawCanvas() {
 		var yStart = size/2 - lines.length * bigFontSize/2 - 10;
 		ctx.textBaseline = "top";
 		var smallFontSize = 24 * ratio;
-		const topMargin = 8;
-		const bottomMargin = 6;
+		var topMargin = 15;
+		var bottomMargin = 10;
 
 		ctx.font = smallFontSize + "px " + fonts[0];
 		var prefixLines, suffixLines;
@@ -180,6 +185,9 @@ function drawCanvas() {
 		});
 
 		ctx.font = smallFontSize + "px " + fonts[0];
+		if(fonts[1] === 'Gopher' || fonts[1] === 'Futura') {
+			bottomMargin += 8;
+		}
 
 		if(prefixLines) {
 			prefixLines.forEach((l, i, arr) => {
