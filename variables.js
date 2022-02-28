@@ -141,7 +141,7 @@ const fontPairings = [
 	["Maison Neue", "Gopher", "uppercase", "lowercase"],
 	["Montserrat", "Bebas Neue", "uppercase", "lowercase"],
 	["Brandon Grotesque", "Brandon Grotesque Bold", "lowercase", "uppercase"],
-	["Manrope-SemiBold", "Manrope-SemiBold", "lowercase", "uppercase"],
+	["Manrope-SemiBold", "Manrope-ExtraBold", "lowercase", "uppercase"],
 	["Ivy Mode", "Eksell Display", "lowercase", "uppercase"],
 	["Anonymous Pro", "Futura", "uppercase", "lowercase"],
 	["Neue Haas", "Bodoni", "lowercase", "uppercase"]
@@ -185,7 +185,11 @@ const fonts = [
 		src: "url('./media/MaisonNeue-Book.ttf')"
 	},
 	{
-		name: "Manrope-SemimBold",
+		name: "Manrope-ExtraBold",
+		src: "url('./media/Manrope-ExtraBold.ttf')"
+	},
+	{
+		name: "Manrope-SemiBold",
 		src: "url('./media/Manrope-SemiBold.ttf')"
 	},
 	{
