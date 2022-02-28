@@ -144,7 +144,7 @@ const fontPairings = [
 	["Manrope-SemiBold", "Manrope-SemiBold", "lowercase", "uppercase"],
 	["Ivy Mode", "Eksell Display", "lowercase", "uppercase"],
 	["Anonymous Pro", "Futura", "uppercase", "lowercase"],
-	["NeueHaasGroteskDisp W02", "BodoniFLF", "lowercase", "uppercase"]
+	["Neue Haas", "Bodoni", "lowercase", "uppercase"]
 ];
 
 export {prefixes, fillInTheblank, pairs, middle, content, colorPalettes, fontPairings};
