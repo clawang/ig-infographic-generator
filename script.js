@@ -1,24 +1,24 @@
 import {prefixes, fillInTheblank, pairs, middle, content, colorPalettes, fontPairings, fonts} from './variables.js';
 
 const used = [{},{}];
-let canvas = document.getElementById("downloadable");
+var canvas = document.getElementById("downloadable");
 const ctx = canvas.getContext('2d');
 
-let width;
-let height;
+var width;
+var height;
 
 // set the number of canvas pixels, scaled for screen resolution
-let pxScale = window.devicePixelRatio;
+var pxScale = window.devicePixelRatio;
 
 // use img from the DOM
 const image = document.querySelector('img');
 image.crossOrigin = "Anonymous";
 
-const getRandom = (min, max) => {
+function getRandom(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const loadFonts = async () => {
+async function loadFonts() {
 	fonts.forEach(async(font) => {
 		const fontFile = new FontFace(font.name, font.src);
 		await fontFile.load();
@@ -26,7 +26,11 @@ const loadFonts = async () => {
 	});
 }
 
-const setup = () => {
+function setup() {
+	(async () => {
+        await loadFonts()
+    })()
+
     // fixed canvas size
     width = canvas.width;
     height = canvas.height;
@@ -49,12 +53,12 @@ const setup = () => {
     ctx.scale(pxScale, pxScale);
 }
 
-const generateKeyword = (plural) => {
+function generateKeyword(plural) {
 	const index = plural ? 1 : 0;
 	if(Object.keys(used[index]).length === content[index].length) {
 		used[index] = {};
 	}
-	let wordIndex, result;
+	var wordIndex, result;
 	while(result === undefined || used[index].hasOwnProperty(result)) {
 		wordIndex = getRandom(0, content[index].length);
 		result = content[index][wordIndex];
@@ -63,17 +67,17 @@ const generateKeyword = (plural) => {
 	return result;
 }
 
-const getOption = (random) => {
+function getOption(random) {
 	if(random < 40) return 1; //fill in the blank
 	else if(random >= 40 && random < 70) return 2; //middle
 	else if(random >= 70 && random < 90) return 0; //prefix
 	else if(random >= 90) return 3; //paris
 }
 
-const getMessage = () => {
-	let str = '';
-	let prefixIndex, contentIndex, suffixIndex;
-	let prefix, keyword, suffix;
+function getMessage() {
+	var str = '';
+	var prefixIndex, contentIndex, suffixIndex;
+	var prefix, keyword, suffix;
 	const random = getRandom(0, 100);
 	const option = getOption(random);
 	if(option === 0) {
@@ -86,8 +90,8 @@ const getMessage = () => {
 		keyword = generateKeyword(getRandom(0, 2));
 		//str += blank1[prefixIndex] + " " + blank2[suffixIndex];
 	} else if(option === 2) {
-		let index = getRandom(0, middle.length);
-		let replaceIndex = middle[index].indexOf('%');
+		var index = getRandom(0, middle.length);
+		var replaceIndex = middle[index].indexOf('%');
 		if(replaceIndex < 0) {
 			replaceIndex = middle[index].indexOf('*');
 			keyword = generateKeyword(1);
@@ -98,7 +102,7 @@ const getMessage = () => {
 		keyword += middle[index].substring(replaceIndex+1);
 		//str = middle[index].substring(0, replaceIndex) + content[contentIndex] + middle[index].substring(replaceIndex+1);
 	} else if(option === 3) {
-		let index = getRandom(0, pairs.length);
+		var index = getRandom(0, pairs.length);
 		prefix = pairs[index][0];
 		suffix = pairs[index][1];
 		keyword = generateKeyword(getRandom(0, 2));
@@ -107,7 +111,7 @@ const getMessage = () => {
 	return {option, prefix, keyword, suffix};
 }
 
-const getLines = (ctx, text, maxWidth) => {
+function getLines(ctx, text, maxWidth) {
     var words = text.split(" ");
     var lines = [];
     var currentLine = words[0];
@@ -126,15 +130,15 @@ const getLines = (ctx, text, maxWidth) => {
     return lines;
 }
 
-const drawCanvas = () => {
+function drawCanvas() {
 	const size = width;
 	const ratio = size/500;
 
 	/** Drawing background */
-	const palette = colorPalettes[getRandom(0, colorPalettes.length)];
-	ctx.fillStyle = palette[0];
+	const pavarte = colorPalettes[getRandom(0, colorPalettes.length)];
+	ctx.fillStyle = pavarte[0];
 	ctx.fillRect(0, 0, size, size);
-	ctx.fillStyle = palette[1];
+	ctx.fillStyle = pavarte[1];
 	ctx.textAlign = 'center';
 
 	/** Picking font */
@@ -143,19 +147,19 @@ const drawCanvas = () => {
 	const msg = getMessage();
 
 	if(msg.prefix) {
-		let bigFontSize = 40 * ratio;
+		var bigFontSize = 40 * ratio;
 		if(fonts[1] === "Bebas Neue") bigFontSize *= 1.4;
 		ctx.font = bigFontSize + "px " + fonts[1];
 		const message = fonts[3] === "uppercase" ? msg.keyword.toUpperCase() : msg.keyword;
 		const lines = getLines(ctx, message, size-40);
-		let yStart = size/2 - lines.length * bigFontSize/2 - 10;
+		var yStart = size/2 - lines.length * bigFontSize/2 - 10;
 		ctx.textBaseline = "top";
-		let smallFontSize = 24 * ratio;
+		var smallFontSize = 24 * ratio;
 		const topMargin = 8;
 		const bottomMargin = 6;
 
 		ctx.font = smallFontSize + "px " + fonts[0];
-		let prefixLines, suffixLines;
+		var prefixLines, suffixLines;
 		
 		if(msg.prefix) {
 			const prefix = fonts[2] === "uppercase" ? msg.prefix.toUpperCase() : msg.prefix;
@@ -189,7 +193,7 @@ const drawCanvas = () => {
 			});
 		}
 	} else {
-		let fontSize = 40 * ratio;
+		var fontSize = 40 * ratio;
 		if(fonts[1] === "Bebas Neue") fontSize *= 1.5;
 		ctx.font = fontSize + "px " + fonts[1];
 		const message = fonts[3] === "uppercase" ? msg.keyword.toUpperCase() : msg.keyword;
@@ -202,9 +206,9 @@ const drawCanvas = () => {
 	}
 }
 
-const dlCanvas = () => {
-	let canvas = document.getElementById("downloadable");
-	let dt = canvas.toDataURL('image/png');
+function dlCanvas() {
+	var canvas = document.getElementById("downloadable");
+	var dt = canvas.toDataURL('image/png');
 	/* Change MIME type to trick the browser to downlaod the file instead of displaying it */
 	dt = dt.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
 
@@ -216,7 +220,6 @@ const dlCanvas = () => {
 	link.click();
 }
 
-await loadFonts();
 window.addEventListener('load', setup);
 document.getElementById('button').addEventListener("click", drawCanvas);
 document.getElementById('download').addEventListener("click", dlCanvas);
