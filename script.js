@@ -161,7 +161,7 @@ function drawCanvas() {
 		ctx.textBaseline = "top";
 		var smallFontSize = 24 * ratio;
 		var topMargin = 15;
-		var bottomMargin = 10;
+		var bottomMargin = 12;
 
 		ctx.font = smallFontSize + "px " + fonts[0];
 		var prefixLines, suffixLines;
