@@ -1,6 +1,18 @@
 import {prefixes, fillInTheblank, pairs, middle, content, colorPalettes, fontPairings, fonts} from './variables.js';
 
 const used = [{},{}];
+let canvas = document.getElementById("downloadable");
+const ctx = canvas.getContext('2d');
+
+let width;
+let height;
+
+// set the number of canvas pixels, scaled for screen resolution
+let pxScale = window.devicePixelRatio;
+
+// use img from the DOM
+const image = document.querySelector('img');
+image.crossOrigin = "Anonymous";
 
 const getRandom = (min, max) => {
 	return Math.floor(Math.random() * (max - min)) + min;
@@ -12,6 +24,29 @@ const loadFonts = async () => {
 		await fontFile.load();
 		document.fonts.add(fontFile);
 	});
+}
+
+const setup = () => {
+    // fixed canvas size
+    width = canvas.width;
+    height = canvas.height;
+
+    if(window.innerWidth < 500) {
+		width = window.innerWidth;
+		height = window.innerWidth;
+		canvas.width = width;
+		canvas.height = height;
+	}
+
+    // set the CSS display size
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+
+    canvas.width = width * pxScale;
+    canvas.height = height * pxScale;
+
+    // normalize the coordinate system
+    ctx.scale(pxScale, pxScale);
 }
 
 const generateKeyword = (plural) => {
@@ -91,23 +126,9 @@ const getLines = (ctx, text, maxWidth) => {
     return lines;
 }
 
-
-const size = 500;
-
 const drawCanvas = () => {
-	let c = document.getElementById("downloadable");
-	c.width = c.clientWidth * 2
-	c.height = c.clientHeight * 2
-	let ctx = c.getContext("2d");
-	if(window.innerWidth < 600) {
-		ctx.scale(1.4, 1.4);
-	} else {
-		ctx.scale(2, 2);
-	}
-
-	// const bgIndex = getRandom(1, 4);
-	// let bg = document.getElementById("bg"+bgIndex);
-	// ctx.drawImage(bg, 0, 0, size, size);
+	const size = width;
+	const ratio = size/500;
 
 	/** Drawing background */
 	const palette = colorPalettes[getRandom(0, colorPalettes.length)];
@@ -122,14 +143,14 @@ const drawCanvas = () => {
 	const msg = getMessage();
 
 	if(msg.prefix) {
-		let bigFontSize = 35;
+		let bigFontSize = 40 * ratio;
 		if(fonts[1] === "Bebas Neue") bigFontSize *= 1.4;
 		ctx.font = bigFontSize + "px " + fonts[1];
 		const message = fonts[3] === "uppercase" ? msg.keyword.toUpperCase() : msg.keyword;
 		const lines = getLines(ctx, message, size-40);
-		let yStart = size/2 - lines.length * bigFontSize/2 - 20;
+		let yStart = size/2 - lines.length * bigFontSize/2 - 10;
 		ctx.textBaseline = "top";
-		let smallFontSize = 20;
+		let smallFontSize = 24 * ratio;
 		const topMargin = 8;
 		const bottomMargin = 6;
 
@@ -146,7 +167,7 @@ const drawCanvas = () => {
 			suffixLines = getLines(ctx, suffix, size-80);
 		}
 
-		if(msg.option === 0) yStart += (smallFontSize * prefixLines.length + bigFontSize * lines.length - 10)/2;
+		if(msg.option === 0) yStart += (smallFontSize * prefixLines.length)/2;
 
 		ctx.font = bigFontSize + "px " + fonts[1];
 
@@ -168,12 +189,12 @@ const drawCanvas = () => {
 			});
 		}
 	} else {
-		let fontSize = 35;
+		let fontSize = 40 * ratio;
 		if(fonts[1] === "Bebas Neue") fontSize *= 1.5;
 		ctx.font = fontSize + "px " + fonts[1];
 		const message = fonts[3] === "uppercase" ? msg.keyword.toUpperCase() : msg.keyword;
 		const lines = getLines(ctx, message, size-40);
-		const yStart = size/2 - lines.length * 15;
+		const yStart = size/2 - (lines.length * fontSize / 2);
 
 		lines.forEach((l, i, arr) => {
 			ctx.fillText(l, size/2, yStart + (fontSize * i));
@@ -196,5 +217,6 @@ const dlCanvas = () => {
 }
 
 await loadFonts();
+window.addEventListener('load', setup);
 document.getElementById('button').addEventListener("click", drawCanvas);
 document.getElementById('download').addEventListener("click", dlCanvas);

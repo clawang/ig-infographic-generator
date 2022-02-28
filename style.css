@@ -1,5 +1,15 @@
+@font-face {
+	font-family: 'Anonymous Pro';
+	src: url('./media/AnonymousPro-Regular.ttf');
+}
+
 :root {
 	--pink-color: #f5a9ba;
+}
+
+body, html{
+    margin:0;
+    padding:0;
 }
 
 body {
@@ -8,6 +18,7 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	align-content: center;
+	height: 100vh;
 }
 
 h1 {
@@ -19,9 +30,9 @@ p {
 }
 
 canvas {
-	/*border:  1px solid black;*/
 	width: 500px;
 	height: 500px;
+	display: block;
 }
 
 button {
@@ -39,6 +50,7 @@ button {
 	width:  500px;
 	background: white;
 	margin: 10px auto;
+	padding: 0;
 }
 
 .top-bar {

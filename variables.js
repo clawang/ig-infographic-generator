@@ -53,6 +53,8 @@ let middle = [
 	"* are worse than you think",
 	"how % is silencing victims of oppression",
 	"how * are silencing victims of oppression",
+	"here's how % is ruining society",
+	"here's how * are runing socieety",
 ];
 
 let content = {
@@ -98,8 +100,22 @@ let content = {
 		"goblin mode",
 		"having acrylic nails",
 		"baymax from big hero 6",
-		"calling your boss dad",
-		"emily mariko's salmon rice"
+		"calling your boss 'dad'",
+		"emily mariko's salmon rice",
+		"holding a fish in your dating profile",
+		"being from New Jersey",
+		"the jeremy renner app",
+		"the failed streaming service quibi",
+		"kidz bop",
+		"5 minute crafts",
+		"losing the game",
+		"animal crossing",
+		"all too well (10 minute version)",
+		"the boat that blocked the Suez Canal",
+		"rocco the pet rock",
+		"bunny the talking dog",
+		"the iceberg that destroyed the titanic",
+		"baby yoda"
 	],
 	1: [
 		"nepotism babies",
@@ -121,7 +137,9 @@ let content = {
 		"ipad babies",
 		"washed up viners",
 		"the sokovia accords",
-		"elevated basics"
+		"elevated basics",
+		"material gworls",
+		"oompa loompas"
 	]
 };
 
