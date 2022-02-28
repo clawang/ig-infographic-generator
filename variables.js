@@ -147,4 +147,55 @@ const fontPairings = [
 	["Neue Haas", "Bodoni", "lowercase", "uppercase"]
 ];
 
-export {prefixes, fillInTheblank, pairs, middle, content, colorPalettes, fontPairings};
+const fonts = [
+	{
+		name: "Anonymous Pro",
+		src: "url('./media/AnonymousPro-Regular.ttf')"
+	},
+	{
+		name: "Bebas Neue",
+		src: "url('./media/BebasNeue-Regular.ttf')"
+	},
+	{
+		name: "Bodoni",
+		src: "url('./media/Bodoni.ttf')"
+	},
+	{
+		name: "Brandon Grotesque",
+		src: "url('./media/Brandon_reg.otf')"
+	},
+	{
+		name: "Brandon Grotesque Bold",
+		src: "url('./media/Brandon_blk.otf')"
+	},
+	{
+		name: "Eksell Display",
+		src: "url('./media/Eksell-Display-Medium.otf')"
+	},
+	{
+		name: "Gopher",
+		src: "url('./media/Gopher-Regular.ttf')"
+	},
+	{
+		name: "Ivy Mode",
+		src: "url('./media/IvyMode-Regular.ttf')"
+	},
+	{
+		name: "Maison Neue",
+		src: "url('./media/MaisonNeue-Book.ttf')"
+	},
+	{
+		name: "Manrope-SemimBold",
+		src: "url('./media/Manrope-SemiBold.ttf')"
+	},
+	{
+		name: "Montserrat",
+		src: "url('./media/montserrat-regular.ttf')"
+	},
+	{
+		name: "Neue Haas",
+		src: "url('./media/NeueHaasGrotesk.ttf')"
+	},
+];
+
+export {prefixes, fillInTheblank, pairs, middle, content, colorPalettes, fontPairings, fonts};

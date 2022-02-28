@@ -1,9 +1,16 @@
-import {prefixes, fillInTheblank, pairs, middle, content, colorPalettes, fontPairings} from './variables.js';
+import {prefixes, fillInTheblank, pairs, middle, content, colorPalettes, fontPairings, fonts} from './variables.js';
 
 const used = [{},{}];
 
 const getRandom = (min, max) => {
 	return Math.floor(Math.random() * (max - min)) + min;
+}
+
+const loadFonts = async () => {
+	fonts.forEach(async(font) => {
+		const fontFile = new FontFace(font.name, font.src);
+		await fontFile.load();
+	});
 }
 
 const generateKeyword = (plural) => {
@@ -110,6 +117,7 @@ const drawCanvas = () => {
 
 	/** Picking font */
 	const fonts = fontPairings[getRandom(0, fontPairings.length)];
+	console.log(fonts);
 
 	const msg = getMessage();
 
@@ -117,6 +125,7 @@ const drawCanvas = () => {
 		let bigFontSize = 35;
 		if(fonts[1] === "Bebas Neue") bigFontSize *= 1.4;
 		ctx.font = bigFontSize + "px " + fonts[1];
+		console.log(ctx.font);
 		const message = fonts[3] === "uppercase" ? msg.keyword.toUpperCase() : msg.keyword;
 		const lines = getLines(ctx, message, size-40);
 		let yStart = size/2 - lines.length * bigFontSize/2 - 20;
@@ -163,6 +172,7 @@ const drawCanvas = () => {
 		let fontSize = 35;
 		if(fonts[1] === "Bebas Neue") fontSize *= 1.5;
 		ctx.font = fontSize + "px " + fonts[1];
+		console.log(ctx.font);
 		const message = fonts[3] === "uppercase" ? msg.keyword.toUpperCase() : msg.keyword;
 		const lines = getLines(ctx, message, size-40);
 		const yStart = size/2 - lines.length * 15;
@@ -187,5 +197,8 @@ const dlCanvas = () => {
 	link.click();
 }
 
+window.onLoad = () => {
+	loadFonts();
+}
 document.getElementById('button').addEventListener("click", drawCanvas);
 document.getElementById('download').addEventListener("click", dlCanvas);
