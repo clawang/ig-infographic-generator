@@ -51,6 +51,8 @@ let middle = [
 	"* are upholding the patriarchy",
 	"% is worse than you think",
 	"* are worse than you think",
+	"why % is silencing victims of oppression",
+	"why * are silencing victims of oppression",
 ];
 
 let content = {
