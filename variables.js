@@ -55,6 +55,8 @@ let middle = [
 	"how * are silencing victims of oppression",
 	"here's how % is ruining society",
 	"here's how * are ruining society",
+	"how % is an example of toxic masculinity",
+	"how * are an example of toxic masculinity",
 ];
 
 let content = {
@@ -119,7 +121,8 @@ let content = {
 		"having a tidal subscription",
 		"meeting the in-laws",
 		"adding -ussy to everything",
-		"plastic surgery for fish"
+		"millie bobby brown",
+		"pete davidson stealing your girl"
 	],
 	1: [
 		"nepotism babies",

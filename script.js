@@ -64,8 +64,8 @@ function generateKeyword(plural) {
 }
 
 function getOption(random) {
-	if(random < 40) return 1; //fill in the blank
-	else if(random >= 40 && random < 70) return 2; //middle
+	if(random < 40) return 2; //middle
+	else if(random >= 40 && random < 70) return 1; //fill in the blank
 	else if(random >= 70 && random < 90) return 0; //prefix
 	else if(random >= 90) return 3; //paris
 }
