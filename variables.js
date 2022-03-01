@@ -54,7 +54,7 @@ let middle = [
 	"how % is silencing victims of oppression",
 	"how * are silencing victims of oppression",
 	"here's how % is ruining society",
-	"here's how * are runing socieety",
+	"here's how * are runing society",
 ];
 
 let content = {
@@ -159,7 +159,7 @@ let colorPalettes = [
 
 const fontPairings = [
 	["Maison Neue", "Gopher", "uppercase", "lowercase"],
-	["Montserrat", "Bebas Neue", "uppercase", "lowercase"],
+	["Montserrat", "Bebas Neue", "lowercase", "lowercase"],
 	["Brandon Grotesque", "Brandon Grotesque Bold", "lowercase", "uppercase"],
 	["Manrope-SemiBold", "Manrope-ExtraBold", "lowercase", "uppercase"],
 	["Ivy Mode", "Eksell Display", "lowercase", "uppercase"],
