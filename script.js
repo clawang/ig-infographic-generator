@@ -66,7 +66,7 @@ function generateKeyword() {
 		result = content[index][wordIndex];
 	}
 	used[index][result] = wordIndex;
-	return result;
+	return {result, plural: index};
 }
 
 function getOption(random) {
@@ -86,11 +86,11 @@ function getMessage() {
 	if(option === 0) {
 		prefix = prefixes[getRandom(0, prefixes.length)];
 	} else if(option === 1) {
-		const plural = keyword[keyword.length-1] === 's' ? 1 : 0;
+		const plural = keyword.plural;
 		prefix = fillInTheblank[0][getRandom(0, fillInTheblank[0].length)];
 		suffix = fillInTheblank[1][getRandom(0, fillInTheblank[1].length)][plural];
 	} else if(option === 2) {
-		const plural = keyword[keyword.length-1] === 's' ? 1 : 0;
+		const plural = keyword.plural;
 		var index = getRandom(0, middle[plural].length);
 		var template = middle[plural][index];
 		var replaceIndex;
@@ -99,15 +99,14 @@ function getMessage() {
 		} else {
 			replaceIndex = template.indexOf('*');
 		}
-		keyword = template.substring(0, replaceIndex) + keyword;
-		keyword += template.substring(replaceIndex+1);
+		keyword.result = template.substring(0, replaceIndex) + keyword.result;
+		keyword.result += template.substring(replaceIndex+1);
 	} else if(option === 3) {
 		var index = getRandom(0, pairs.length);
 		prefix = pairs[index][0];
 		suffix = pairs[index][1];
-		keyword = generateKeyword(2);
 	}
-	return {option, prefix, keyword, suffix};
+	return {option, prefix, keyword: keyword.result, suffix};
 }
 
 function getLines(ctx, text, maxWidth) {
