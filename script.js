@@ -50,7 +50,16 @@ function setup() {
 }
 
 function generateKeyword(plural) {
-	const index = plural ? 1 : 0;
+	let index;
+	if(plural === 2) {
+		if(Object.keys(used[0]).length/content[0].length > Object.keys(used[1]).length/content[1].length) {
+			index = 0;
+		} else {
+			index = 1;
+		}
+	} else {
+		index = plural;
+	}
 	if(Object.keys(used[index]).length === content[index].length) {
 		used[index] = {};
 	}
@@ -78,10 +87,10 @@ function getMessage() {
 	const option = getOption(random);
 	if(option === 0) {
 		prefix = prefixes[getRandom(0, prefixes.length)];
-		keyword = generateKeyword(getRandom(0, 2));
+		keyword = generateKeyword(2);
 	} else if(option === 1) {
-		let plural = getRandom(0, 2);
-		keyword = generateKeyword(plural);
+		keyword = generateKeyword(2);
+		const plural = keyword[keyword.length-1] === 's' ? 1 : 0;
 		prefix = fillInTheblank[0][getRandom(0, fillInTheblank[0].length)];
 		suffix = fillInTheblank[1][getRandom(0, fillInTheblank[1].length)][plural];
 	} else if(option === 2) {
@@ -99,7 +108,7 @@ function getMessage() {
 		var index = getRandom(0, pairs.length);
 		prefix = pairs[index][0];
 		suffix = pairs[index][1];
-		keyword = generateKeyword(getRandom(0, 2));
+		keyword = generateKeyword(2);
 	}
 	return {option, prefix, keyword, suffix};
 }
