@@ -54,7 +54,7 @@ let middle = [
 	"how % is silencing victims of oppression",
 	"how * are silencing victims of oppression",
 	"here's how % is ruining society",
-	"here's how * are runing society",
+	"here's how * are ruining society",
 ];
 
 let content = {
