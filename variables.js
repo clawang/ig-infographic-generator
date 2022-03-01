@@ -29,12 +29,12 @@ let fillInTheblank = {
 		"everything you should know about",
 	],
 	1: [
-		"and why it's worse than you think",
-		"and what you can do about it",
-		"and why it needs to stop",
-		"and how you can help",
-		"and why you should care about it",
-		"and what to do about it"
+		["and why it's worse than you think", "and why they're worse than you think"],
+		["and what you can do about it", "and what you can do about them"],
+		["and why it needs to stop", "and why they need to be stopped"],
+		["and how you can help", "and how you can help"],
+		["and why you should care about it", "and why you should worry about them"],
+		["and what to do about it", "and what to do about them"]
 	]
 };
 
@@ -115,7 +115,11 @@ let content = {
 		"rocco the pet rock",
 		"bunny the talking dog",
 		"the iceberg that destroyed the titanic",
-		"baby yoda"
+		"baby yoda",
+		"having a tidal subscription",
+		"meeting the in-laws",
+		"adding -ussy to everything",
+		"plastic surgery for fish"
 	],
 	1: [
 		"nepotism babies",
@@ -139,7 +143,12 @@ let content = {
 		"the sokovia accords",
 		"elevated basics",
 		"material gworls",
-		"oompa loompas"
+		"oompa loompas",
+		"mirror selfie thirst traps",
+		"Cassie sympathizers",
+		"hollywood remakes",
+		"drake stans",
+		"poke and stick tattoos"
 	]
 };
 

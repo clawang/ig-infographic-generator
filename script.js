@@ -10,10 +10,6 @@ var height;
 // set the number of canvas pixels, scaled for screen resolution
 var pxScale = window.devicePixelRatio;
 
-// use img from the DOM
-const image = document.querySelector('img');
-image.crossOrigin = "Anonymous";
-
 function getRandom(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -83,12 +79,11 @@ function getMessage() {
 	if(option === 0) {
 		prefix = prefixes[getRandom(0, prefixes.length)];
 		keyword = generateKeyword(getRandom(0, 2));
-		//str = prefix + " " + content[contentIndex];
 	} else if(option === 1) {
+		let plural = getRandom(0, 2);
+		keyword = generateKeyword(plural);
 		prefix = fillInTheblank[0][getRandom(0, fillInTheblank[0].length)];
-		suffix = fillInTheblank[1][getRandom(0, fillInTheblank[1].length)];
-		keyword = generateKeyword(getRandom(0, 2));
-		//str += blank1[prefixIndex] + " " + blank2[suffixIndex];
+		suffix = fillInTheblank[1][getRandom(0, fillInTheblank[1].length)][plural];
 	} else if(option === 2) {
 		var index = getRandom(0, middle.length);
 		var replaceIndex = middle[index].indexOf('%');
@@ -100,14 +95,12 @@ function getMessage() {
 		}
 		keyword = middle[index].substring(0, replaceIndex) + keyword;
 		keyword += middle[index].substring(replaceIndex+1);
-		//str = middle[index].substring(0, replaceIndex) + content[contentIndex] + middle[index].substring(replaceIndex+1);
 	} else if(option === 3) {
 		var index = getRandom(0, pairs.length);
 		prefix = pairs[index][0];
 		suffix = pairs[index][1];
 		keyword = generateKeyword(getRandom(0, 2));
 	}
-	//console.log(str);
 	return {option, prefix, keyword, suffix};
 }
 
@@ -217,10 +210,8 @@ function drawCanvas() {
 function dlCanvas() {
 	var canvas = document.getElementById("downloadable");
 	var dt = canvas.toDataURL('image/png');
-	/* Change MIME type to trick the browser to downlaod the file instead of displaying it */
 	dt = dt.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
 
-	/* In addition to <a>'s "download" attribute, you can define HTTP-style headers */
 	dt = dt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=Canvas.png');
 	var link = document.createElement('a');
 	link.download = 'infographic.png';
