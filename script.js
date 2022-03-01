@@ -49,19 +49,16 @@ function setup() {
     ctx.scale(pxScale, pxScale);
 }
 
-function generateKeyword(plural) {
+function generateKeyword() {
 	let index;
-	if(plural === 2) {
-		if(Object.keys(used[0]).length/content[0].length > Object.keys(used[1]).length/content[1].length) {
-			index = 0;
-		} else {
-			index = 1;
-		}
+	if(Object.keys(used[0]).length/content[0].length < Object.keys(used[1]).length/content[1].length) {
+		index = 0;
 	} else {
-		index = plural;
+		index = 1;
 	}
 	if(Object.keys(used[index]).length === content[index].length) {
-		used[index] = {};
+		used[0] = {};
+		used[1] = {};
 	}
 	var wordIndex, result;
 	while(result === undefined || used[index].hasOwnProperty(result)) {
@@ -85,25 +82,25 @@ function getMessage() {
 	var prefix, keyword, suffix;
 	const random = getRandom(0, 100);
 	const option = getOption(random);
+	var keyword = generateKeyword(2);
 	if(option === 0) {
 		prefix = prefixes[getRandom(0, prefixes.length)];
-		keyword = generateKeyword(2);
 	} else if(option === 1) {
-		keyword = generateKeyword(2);
 		const plural = keyword[keyword.length-1] === 's' ? 1 : 0;
 		prefix = fillInTheblank[0][getRandom(0, fillInTheblank[0].length)];
 		suffix = fillInTheblank[1][getRandom(0, fillInTheblank[1].length)][plural];
 	} else if(option === 2) {
-		var index = getRandom(0, middle.length);
-		var replaceIndex = middle[index].indexOf('%');
-		if(replaceIndex < 0) {
-			replaceIndex = middle[index].indexOf('*');
-			keyword = generateKeyword(1);
+		const plural = keyword[keyword.length-1] === 's' ? 1 : 0;
+		var index = getRandom(0, middle[plural].length);
+		var template = middle[plural][index];
+		var replaceIndex;
+		if(plural === 0) {
+			replaceIndex = template.indexOf('%');
 		} else {
-			keyword = generateKeyword(0);
+			replaceIndex = template.indexOf('*');
 		}
-		keyword = middle[index].substring(0, replaceIndex) + keyword;
-		keyword += middle[index].substring(replaceIndex+1);
+		keyword = template.substring(0, replaceIndex) + keyword;
+		keyword += template.substring(replaceIndex+1);
 	} else if(option === 3) {
 		var index = getRandom(0, pairs.length);
 		prefix = pairs[index][0];

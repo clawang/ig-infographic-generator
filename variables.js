@@ -38,26 +38,30 @@ let fillInTheblank = {
 	]
 };
 
-let middle = [
-	"here's why % is problematic",
-	"what % is and why you should care about it",
-	"% needs to be stopped",
-	"here's why * are problematic",
-	"what * are and why you should care about them",
-	"* need to be stopped",
-	"% is perpetuating white supremacy",
-	"* are perpetuating white supremacy",
-	"% is upholding the patriarchy",
-	"* are upholding the patriarchy",
-	"% is worse than you think",
-	"* are worse than you think",
-	"how % is silencing victims of oppression",
-	"how * are silencing victims of oppression",
-	"here's how % is ruining society",
-	"here's how * are ruining society",
-	"how % is an example of toxic masculinity",
-	"how * are an example of toxic masculinity",
-];
+let middle = {
+	0: [
+		"here's why % is problematic",
+		"what % is and why you should care about it",
+		"% needs to be stopped",
+		"% is perpetuating white supremacy",
+		"% is worse than you think",
+		"% is upholding the patriarchy",
+		"how % is silencing victims of oppression",
+		"how % is an example of toxic masculinity",
+		"here's how % is ruining society"
+	],
+	1: [
+		"here's why * are problematic",
+		"what * are and why you should care about them",
+		"* need to be stopped",
+		"* are perpetuating white supremacy",
+		"* are upholding the patriarchy",
+		"* are worse than you think",
+		"how * are silencing victims of oppression",		
+		"here's how * are ruining society",
+		"how * are an example of toxic masculinity",
+	]
+};
 
 let content = {
 	0: [
