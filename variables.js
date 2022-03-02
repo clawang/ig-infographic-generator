@@ -1,6 +1,6 @@
 let prefixes = [
 	"so you want to talk about", 
-	"what to do about",
+	"what you can do about",
 	"5 ways to help the situation with",
 	"why aren't more people talking about",
 	"why you should be more concerned about",
@@ -126,7 +126,14 @@ let content = {
 		"meeting the in-laws",
 		"adding -ussy to everything",
 		"millie bobby brown",
-		"pete davidson stealing your girl"
+		"pete davidson stealing your girl",
+		"being gluten-free for fun",
+		"calling things 'camp' when they're really just bad",
+		"getting too drunk at the company happy hour",
+		"newton's first law of motion",
+		"kit kittredge the american girl doll",
+		"stuart little",
+		"gay pinocchio"
 	],
 	1: [
 		"nepotism babies",
@@ -154,8 +161,13 @@ let content = {
 		"mirror selfie thirst traps",
 		"Cassie sympathizers",
 		"hollywood remakes",
+		"people who post seriously on linkedin",
 		"drake stans",
-		"poke and stick tattoos"
+		"impulsive tattoos",
+		"the multiplication tables",
+		"horse girls",
+		"people who have a playlist named 'vibes'",
+		"live laugh love signs"
 	]
 };
 
