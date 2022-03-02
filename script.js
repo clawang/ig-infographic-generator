@@ -47,6 +47,9 @@ function setup() {
 
     // normalize the coordinate system
     ctx.scale(pxScale, pxScale);
+
+    document.getElementById('button').addEventListener("click", drawCanvas);
+	document.getElementById('download').addEventListener("click", dlCanvas);
 }
 
 function generateKeyword() {
@@ -225,5 +228,3 @@ function dlCanvas() {
 }
 
 window.addEventListener('load', setup);
-document.getElementById('button').addEventListener("click", drawCanvas);
-document.getElementById('download').addEventListener("click", dlCanvas);
